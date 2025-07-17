@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>このサイトについて</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: small;
+    }
+
+    .naiyou {
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 20px;
+      padding-left: 10px;
+      border-left: 5px solid #4CAF50;
+    }
+
+    code {
+      background-color: #000000;
+      padding: 5px;
+      border-radius: 5px;
+      display: block;
+    }
+
+    pre {
+      color: #f0f0f0;
+      border-radius: 5px;
+      font-size: 1.2em;
+      overflow-x: auto;
+      margin: 0;
+    }
+
+    .code-block {
+      position: relative;
+      margin-top: 10px;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    .copy-btn:hover {
+      background-color: #45a049;
+    }
+    button{
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>ようこそ！</h1>
+
+  <div class="question">
+    <div class="naiyou"> 
+      <h2>Q1.このサイトについて</h2>
+    </div>
+      <p>A1.このサイトは、英語学習を支援するために作られたもの<br>...<b>ではなくwebフィルター回避サイト</b>です。
+      </p>
+  </div>
+
+  <div class="question">
+    <div class="naiyou"> 
+      <h2>Q2."接続が拒否されてました"と表示されました。</h2>
+    </div>
+      <p>A2.おそらく原因としてはXSS(クロス・サイト・スクリプティング)攻撃の阻止させるためにあるでしょう。XSS攻撃とは、悪意のあるスクリプト（通常はJavaScript）を、Webページに意図的に挿入する攻撃です。
+そのスクリプトが、ユーザーのブラウザで実行されてしまうことで、さまざまな被害が生じます。それをそしするためにiframeなどからアクセスできないようになっているのです。
+      </p>
+      <p><b>例:Yahoo,Google,Microsoft その他大手企業サイトなど</b></p>
+      <p>対処法としては<b>以下のような</b>プロキシサイトなどを使うことをお勧めします。
+      </p>
+
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyToClipboard()">コピー</button>
+        <code><pre id="proxyCode">
+https://proxysite.com
+https://proxysite.pro
+        </pre></code>
+      </div>
+      <h2>やり方</h2>
+  <p>画像通りに進めてください</p>
+<img src="../../image/first.png">
+<p>次に</p>
+<img src="../../image/second.png">
+
+<p>これで確実にアクセスできるはずです！！</p>
+</div>
+
+ <div class="question">
+    <div class="naiyou"> 
+      <h2>Q3.Q2のやり方で試しましたがラグくなり、アクセスができませんでした。</h2>
+    </div>
+    <p>アクセスが拒否される場合はあきらめてください。これは僕でも対処できません</p>
+  </div>
+  <button onclick="button();">ホームに戻る</button>
+  <footer>
+    <p>&copy; 2025 じゃくのサイト. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function copyToClipboard() {
+      const text = document.getElementById("proxyCode").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("コピーしました！");
+      }).catch(err => {
+        alert("コピーに失敗しました：" + err);
+      });
+    }
+    button = () => {
+      window.location.href = "../index";
+    }
+  </script>
+</body>
+</html>
