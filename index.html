@@ -120,6 +120,8 @@
 <body>
 
   <h1>英語を勉強する</h1>
+  <button onclick="toggleFullscreen()">全画面切替</button>
+
 <a href="../about">この勉強サイトについて</a>
   <div class="input-area">
     <input type="text" id="urlInput" placeholder="https://example.com">
@@ -143,6 +145,18 @@
         alert("有効なURL（httpまたはhttps）を入力してください。");
       }
     }
+    let full = false;
+function toggleFullscreen() {
+  const iframe = document.getElementById("viewer");
+  if (!full) {
+    iframe.style.height = "100vh";
+    full = true;
+  } else {
+    iframe.style.height = "70vh";
+    full = false;
+  }
+}
+
   </script>
 
 </body>
