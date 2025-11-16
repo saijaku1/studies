@@ -178,16 +178,17 @@
   // =====================================
   // Google検索
   // =====================================
-  function searchGoogle() {
-    const q = document.getElementById("searchInput").value.trim();
-    const iframe = document.getElementById("viewer");
-    const closeBtn = document.getElementById("closeBtn");
+ function searchGoogle() {
+  const q = document.getElementById("searchInput").value.trim();
+  const iframe = document.getElementById("viewer");
+  const closeBtn = document.getElementById("closeBtn");
 
-    if (q === "") return;
+  if (q === "") return;
 
-    iframe.src = "https://www.google.com/search?q=" + encodeURIComponent(q);
-    closeBtn.style.display = "block";
-  }
+  // Googleの代わりに iframe 埋め込み可能な DuckDuckGo
+  iframe.src = "https://duckduckgo.com/?q=" + encodeURIComponent(q);
+  closeBtn.style.display = "block";
+}
 
   // =====================================
   // iframe を閉じる（×）
