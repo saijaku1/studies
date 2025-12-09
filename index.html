@@ -2,21 +2,27 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-  <link rel="icon" href="../image/jaku.png">
+<link rel="icon" href="../image/jaku.png">
 <title>英語勉強サイト</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
+
+  <!-- ▼ 左パネル -->
   <div class="left" id="leftPanel">
     <div class="resize-handle" id="resizeHandle"></div>
+
+    <!-- パネルを隠すボタン（パネル内に移動） -->
+    <button class="HidePanelBtn" onclick="hidePanel()">パネルを隠す</button>
 
     <h2>ページ読み込み</h2>
     <div style="position:relative;">
       <input id="urlInput" type="text" placeholder="https://example.com">
       <div id="suggestions" class="suggestions"></div>
     </div>
+
     <button onclick="loadURL()">表示</button>
     <button onclick="goBack()">戻る</button>
     <button onclick="goForward()">進む</button>
@@ -39,29 +45,37 @@
       <li>URLを入力して「表示」を押すとページを開きます</li>
       <li>「戻る」「進む」で履歴を移動できます</li>
       <li>検索ワード入力でBing検索が可能</li>
-      <li>「ブックマーク」でURLを保存、右の削除ボタンで消せます</li>
-      <li>「ライト/ダーク切替」でテーマ変更可能</li>
-      <li>「全画面」でiframeを全画面表示できます</li>
-      <li>「スクショ」でUI全体の画像を保存できます</li>
-      <li>左パネルの右端をドラッグすると幅を調整可能です</li>
+      <li>「ブックマーク」で保存と削除が可能</li>
+      <li>ライト/ダーク切替あり</li>
+      <li>iframeの全画面表示が可能</li>
+      <li>UI全体をスクショ可能</li>
+      <li>左パネル幅はドラッグで調整可能</li>
     </ul>
 
     <h2 onclick="toggleSection('attention', this)" class="h2">注意点 ▼</h2>
     <ul id="attention" class="hidden">
-      <li>大手企業サイトや銀行・Googleなどは iframe に表示できないことがあります</li>
-      <li>理由：X-Frame-Options や Content-Security-Policy でブロックされているためです</li>
-      <li>対処法：表示できないサイトは直接ブラウザで開いてください</li>
-      <li>検索は iframe 埋め込み可能な Bing を利用しています（Googleは不可）</li>
-      <li>URLや検索ワードに個人情報を含める場合は注意してください</li>
-      <li>ブックマーク機能はローカル保存です。削除すると復元できません</li>
+      <li>大手企業サイトやGoogle等はiframe表示できない場合があります</li>
+      <li>原因はX-Frame-OptionsやCSPによる制限です</li>
+      <li>表示不可の場合は直接ブラウザで開いてください</li>
+      <li>検索はBingを利用しています（Googleは不可）</li>
+      <li>個人情報の入力には注意</li>
+      <li>ブックマークはローカル保存のため削除は復元不可</li>
     </ul>
   </div>
 
+  <!-- ▼ 右パネル -->
   <div class="right">
+    <!-- パネルを表示するボタン（右側に固定） -->
+    <button id="showPanelBtn" class="show-panel"
+            onclick="showPanel()" style="display:none;">
+      パネル表示
+    </button>
+
     <button class="close-btn" id="closeBtn" onclick="closeIframe()">×</button>
     <iframe id="viewer"></iframe>
     <div class="loading" id="loading">読み込み中...</div>
   </div>
+
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
